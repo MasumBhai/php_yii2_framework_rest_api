@@ -1,8 +1,6 @@
 <?php
 
-namespace app\models;
-
-use Yii;
+namespace app\modules\api\models;
 
 /**
  * This is the model class for table "{{%cart}}".
@@ -49,7 +47,7 @@ class Cart extends \yii\db\ActiveRecord
     /**
      * Gets query for [[CartItems]].
      *
-     * @return \yii\db\ActiveQuery|\app\models\query\CartItemQuery
+     * @return \yii\db\ActiveQuery|\app\modules\api\models\query\CartItemQuery
      */
     public function getCartItems()
     {
@@ -59,7 +57,7 @@ class Cart extends \yii\db\ActiveRecord
     /**
      * Gets query for [[User]].
      *
-     * @return \yii\db\ActiveQuery|\app\models\query\UserQuery
+     * @return \yii\db\ActiveQuery|\app\modules\api\models\query\UserQuery
      */
     public function getUser()
     {
@@ -68,10 +66,10 @@ class Cart extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\CartQuery the active query used by this AR class.
+     * @return \app\modules\api\models\query\CartQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\CartQuery(get_called_class());
+        return new \app\modules\api\models\query\CartQuery(get_called_class());
     }
 }

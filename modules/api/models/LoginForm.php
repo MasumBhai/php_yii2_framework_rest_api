@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\modules\api\models;
 
 use _data\User;
 use Yii;
@@ -9,7 +9,7 @@ use yii\base\Model;
 /**
  * LoginForm is the model behind the login form.
  *
- * @property-read User|null $user
+ * @property-read \modules\models\\app\modules\api\models\User|null $user
  *
  */
 class LoginForm extends Model
@@ -69,7 +69,7 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return \modules\models\\app\modules\api\models\User|null
      */
     public function getUser()
     {

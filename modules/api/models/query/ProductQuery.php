@@ -1,11 +1,11 @@
 <?php
 
-namespace app\models\query;
+namespace app\modules\api\models\query;
 
 /**
  * This is the ActiveQuery class for [[\app\models\Product]].
  *
- * @see \app\models\Product
+ * @see \app\modules\api\models\Product
  */
 class ProductQuery extends \yii\db\ActiveQuery
 {
@@ -16,7 +16,7 @@ class ProductQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Product[]|array
+     * @return \app\modules\api\models\Product[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class ProductQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\Product|array|null
+     * @return \app\modules\api\models\Product|array|null
      */
     public function one($db = null)
     {

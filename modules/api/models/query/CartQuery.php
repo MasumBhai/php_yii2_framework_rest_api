@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models\query;
+namespace app\modules\api\models\query;
 
 /**
- * This is the ActiveQuery class for [[\app\models\User]].
+ * This is the ActiveQuery class for [[\app\models\Cart]].
  *
- * @see \app\models\User
+ * @see \app\modules\api\models\Cart
  */
-class UserQuery extends \yii\db\ActiveQuery
+class CartQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class UserQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\User[]|array
+     * @return \app\modules\api\models\Cart[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class UserQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\models\User|array|null
+     * @return \app\modules\api\models\Cart|array|null
      */
     public function one($db = null)
     {

@@ -1,8 +1,6 @@
 <?php
 
-namespace app\models;
-
-use Yii;
+namespace app\modules\api\models;
 
 /**
  * This is the model class for table "{{%product}}".
@@ -53,7 +51,7 @@ class Product extends \yii\db\ActiveRecord
     /**
      * Gets query for [[CartItems]].
      *
-     * @return \yii\db\ActiveQuery|\app\models\query\CartItemQuery
+     * @return \yii\db\ActiveQuery|\app\modules\api\models\query\CartItemQuery
      */
     public function getCartItems()
     {
@@ -62,10 +60,10 @@ class Product extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\models\query\ProductQuery the active query used by this AR class.
+     * @return \app\modules\api\models\query\ProductQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\models\query\ProductQuery(get_called_class());
+        return new \app\modules\api\models\query\ProductQuery(get_called_class());
     }
 }
