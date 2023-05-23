@@ -2,6 +2,9 @@
 
 namespace app\modules\api\models;
 
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "{{%cart_item}}".
  *
@@ -78,5 +81,18 @@ class CartItem extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \app\modules\api\models\query\CartItemQuery(get_called_class());
+    }
+
+    // this is a cool thing to me
+    public function behaviors(): array
+    {
+        return [
+            TimestampBehavior::class,
+            [
+                'class' => BlameableBehavior::class,
+                'updatedByAttribute' => false,
+                'createdByAttribute' => false,
+
+            ]];
     }
 }

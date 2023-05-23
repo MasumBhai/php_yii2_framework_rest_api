@@ -45,7 +45,8 @@ class m230523_030220_product_catalogue_schema extends Migration
             'cart_id' => $this->integer()->notNull(),
             'product_id' => $this->integer()->notNull(),
             'product_quantity' => $this->integer()->notNull(),
-            'updated_at' => $this->integer()->notNull(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer()
         ], $tableOptions);
 
         $this->addForeignKey('fk_cart_customer', '{{%cart}}', 'user_id',
