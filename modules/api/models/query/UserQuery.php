@@ -3,9 +3,9 @@
 namespace app\modules\api\models\query;
 
 /**
- * This is the ActiveQuery class for [[\app\modules\api\models\User]].
+ * This is the ActiveQuery class for [[\app\modules\api\models\Person]].
  *
- * @see \app\modules\api\models\User
+ * @see \app\modules\api\models\Person
  */
 class UserQuery extends \yii\db\ActiveQuery
 {
@@ -16,7 +16,7 @@ class UserQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\modules\api\models\User[]|array
+     * @return \app\modules\api\models\Person[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class UserQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return \app\modules\api\models\User|array|null
+     * @return \app\modules\api\models\Person|array|null
      */
     public function one($db = null)
     {

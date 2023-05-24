@@ -2,7 +2,10 @@
 
 namespace app\modules\api\models;
 
+use app\modules\api\models\query\UserQuery;
 use Yii;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -15,7 +18,7 @@ use Yii;
  *
  * @property Cart[] $carts
  */
-class User extends \yii\db\ActiveRecord
+class Person extends ActiveRecord implements IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -44,7 +47,7 @@ class User extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_id' => 'User ID',
+            'user_id' => 'Person ID',
             'username' => 'Username',
             'email' => 'Email',
             'password_hash' => 'Password Hash',
@@ -64,10 +67,45 @@ class User extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \app\modules\api\models\query\UserQuery the active query used by this AR class.
+     * @return UserQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \app\modules\api\models\query\UserQuery(get_called_class());
+        return new UserQuery(get_called_class());
+    }
+
+    public static function findIdentity($id)
+    {
+        // TODO: Implement findIdentity() method. ; Done
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // TODO: Implement findIdentityByAccessToken() method. ; for token-based authentication
+        return null;
+    }
+
+    public function getId(): int
+    {
+        // TODO: Implement getId() method.
+        return $this->user_id;
+    }
+
+    public function getAuthKey()
+    {
+        // TODO: Implement getAuthKey() method. ; for cookie-based authentication
+        return null;
+    }
+
+    public function validateAuthKey($authKey): bool
+    {
+        // TODO: Implement validateAuthKey() method. ; for cookie-based authentication
+        return false;
+    }
+
+    public function validatePassword($password): bool
+    {
+        return Yii::$app->getSecurity()->validatePassword($password, $this->password_hash);
     }
 }

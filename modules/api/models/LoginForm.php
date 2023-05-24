@@ -1,82 +1,46 @@
 <?php
 
-namespace app\modules\api\models;
-
-use _data\User;
-use Yii;
+//use _data\User;
+use app\modules\api\models\Person;
 use yii\base\Model;
 
-/**
- * LoginForm is the model behind the login form.
- *
- * @property-read \modules\models\\app\modules\api\models\User|null $user
- *
- */
 class LoginForm extends Model
 {
-    public $username;
+    public $email;
     public $password;
-    public $rememberMe = true;
 
-    private $_user = false;
-
-
-    /**
-     * @return array the validation rules.
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
+            [['email', 'password'], 'required'],
+            ['email', 'email'],
             ['password', 'validatePassword'],
         ];
     }
 
-    /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
-     *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
-     */
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Incorrect email or password.');
             }
         }
     }
 
-    /**
-     * Logs in a user using the provided username and password.
-     * @return bool whether the user is logged in successfully
-     */
-    public function login()
+    public function getUser(): ?Person
     {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-        }
-        return false;
+        return Person::findOne(['email' => $this->email]);
     }
 
-    /**
-     * Finds user by [[username]]
-     *
-     * @return \modules\models\\app\modules\api\models\User|null
-     */
-    public function getUser()
+    public function login(): bool
     {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+        if ($this->validate()) {
+            $valid_user = $this->getUser();
+            return Yii::$app->user->login($valid_user);
         }
 
-        return $this->_user;
+        return false;
     }
 }

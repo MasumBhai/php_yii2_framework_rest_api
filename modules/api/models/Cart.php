@@ -9,7 +9,7 @@ namespace app\modules\api\models;
  * @property int $user_id
  *
  * @property CartItem[] $cartItems
- * @property User $user
+ * @property Person $user
  */
 class Cart extends \yii\db\ActiveRecord
 {
@@ -29,7 +29,7 @@ class Cart extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'required'],
             [['user_id'], 'integer'],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'user_id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Person::class, 'targetAttribute' => ['user_id' => 'user_id']],
         ];
     }
 
@@ -40,7 +40,7 @@ class Cart extends \yii\db\ActiveRecord
     {
         return [
             'cart_id' => 'Cart ID',
-            'user_id' => 'User ID',
+            'user_id' => 'Person ID',
         ];
     }
 
@@ -55,13 +55,13 @@ class Cart extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[User]].
+     * Gets query for [[Person]].
      *
      * @return \yii\db\ActiveQuery|\app\modules\api\models\query\UserQuery
      */
     public function getUser()
     {
-        return $this->hasOne(User::class, ['user_id' => 'user_id']);
+        return $this->hasOne(Person::class, ['user_id' => 'user_id']);
     }
 
     /**
