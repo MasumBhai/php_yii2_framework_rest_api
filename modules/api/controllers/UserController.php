@@ -32,13 +32,15 @@ class UserController extends ActiveController
      */
     public function actionLogin()
     {
-        $useremail = Yii::$app->getRequest()->getBodyParam('email');
+        $request = Yii::$app->request;
+        $username = Yii::$app->getRequest()->getBodyParam('username');
         $password = Yii::$app->getRequest()->getBodyParam('password_hash');
 
-        $user = Person::findOne(['email' => $useremail]);
+        $user = Person::findOne(['username' => $username]);
 
         if ($user !== null && Yii::$app->getSecurity()->validatePassword($password, $user->password_hash)) {
 
+//            return $this->redirect(['site/index']);
             return ['message' => 'Login successful.'];
         }
 
@@ -47,6 +49,8 @@ class UserController extends ActiveController
 
     public function actionLogout()
     {
+        Yii::$app->session->remove('user_id');
+
         return ['message' => 'Logout successful.'];
     }
 

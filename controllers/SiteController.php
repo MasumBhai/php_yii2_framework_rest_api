@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\modules\api\models\ContactForm;
 use app\modules\api\models\Person;
-use LoginForm;
+use app\modules\api\models\LoginForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;

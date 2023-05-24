@@ -29,7 +29,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => '_data\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -54,9 +54,10 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-//            'rules' => [
+            'rules' => [
 //                ['class' => UrlRule::class, 'controller' => ['user', 'product', 'cart_item']],
-//            ]
+                'products' => 'product/index',
+            ]
         ],
     ],
     'params' => $params,

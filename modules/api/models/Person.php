@@ -18,7 +18,8 @@ use yii\web\IdentityInterface;
  *
  * @property Cart[] $carts
  */
-class Person extends ActiveRecord implements IdentityInterface
+//class Person extends ActiveRecord implements IdentityInterface
+class Person extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -74,35 +75,35 @@ class Person extends ActiveRecord implements IdentityInterface
         return new UserQuery(get_called_class());
     }
 
-    public static function findIdentity($id)
-    {
-        // TODO: Implement findIdentity() method. ; Done
-        return static::findOne($id);
-    }
-
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        // TODO: Implement findIdentityByAccessToken() method. ; for token-based authentication
-        return null;
-    }
-
-    public function getId(): int
-    {
-        // TODO: Implement getId() method.
-        return $this->user_id;
-    }
-
-    public function getAuthKey()
-    {
-        // TODO: Implement getAuthKey() method. ; for cookie-based authentication
-        return null;
-    }
-
-    public function validateAuthKey($authKey): bool
-    {
-        // TODO: Implement validateAuthKey() method. ; for cookie-based authentication
-        return false;
-    }
+//    public static function findIdentity($id)
+//    {
+//        // TODO: Implement findIdentity() method. ; Done
+//        return static::findOne($id);
+//    }
+//
+//    public static function findIdentityByAccessToken($token, $type = null)
+//    {
+//        // TODO: Implement findIdentityByAccessToken() method. ; for token-based authentication
+//        return null;
+//    }
+//
+//    public function getId(): int
+//    {
+//        // TODO: Implement getId() method.
+//        return $this->user_id;
+//    }
+//
+//    public function getAuthKey()
+//    {
+//        // TODO: Implement getAuthKey() method. ; for cookie-based authentication
+//        return null;
+//    }
+//
+//    public function validateAuthKey($authKey): bool
+//    {
+//        // TODO: Implement validateAuthKey() method. ; for cookie-based authentication
+//        return false;
+//    }
 
     public function validatePassword($password): bool
     {
